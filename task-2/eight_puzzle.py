@@ -51,4 +51,25 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
+
+    dis = 0
+
+    for i in range(9):
+        if board[i] != goal[i]:
+            #row and column of the current value
+            row_cur = i // 3
+            col_cur = i % 3
+
+            #position of the goal
+            goal_index = goal.index(board[i])
+
+            #row and column for the goal state.
+            row_goal = goal_index // 3
+            col_goal = goal_index % 3
+
+            manhattan_distance = abs(row_cur - row_goal) + abs(col_cur - col_goal)
+            dis += manhattan_distance
+
+    return dis
+
